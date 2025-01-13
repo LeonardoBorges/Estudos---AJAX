@@ -1,3 +1,10 @@
+<?
+	for($i = 0; $i < 1000000000; $i++) {
+		// faz nada
+	}	
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="pt-br">
 	<head>
