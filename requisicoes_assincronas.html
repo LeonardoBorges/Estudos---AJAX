@@ -10,7 +10,7 @@
         
         <script>
 
-            
+				document.getElementById("conteudo").innerHTML = '';
                 function requisitarPagina(url){
                     if(!document.getElementById("loading")){
                     let imgLoading = document.createElement("img");
@@ -32,9 +32,17 @@
             // de alguma logica para verificar se a requisição foi concluida
                ajax.onreadystatechange = () => {
                   //console.log(ajax.readyState);
-                  if(ajax.readyState == 4){
-                    console.log('Requisição concluida');
+                  if(ajax.readyState == 4 && ajax.status == 200){
+					document.getElementById("conteudo").innerHTML = ajax.responseText;
+                    console.log('Requisição concluida com sucesso status: ' + ajax.status);
+					//document.getElementById("loading").remove();
                   }
+
+				  if(ajax.readyState == 4 && ajax.status != 200){
+					document.getElementById("conteudo").innerHTML = '...tente novamente...';
+					console.log('Requisição falhou com status: ' + ajax.status);
+					//document.getElementById("loading").remove();
+				  }
                }
             
                ajax.send()
@@ -66,7 +74,7 @@
 	    		<div class="col-md-4 center"></div>
 	    		<div class="col-md-4 center">
 	    			<a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_1_conteudo.php')">Página 1</a>
-	    			<a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_2_conteudo.html')">Página 2</a>
+	    			<a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_2_conteudo.php')">Página 2</a>
 	    			<a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_3_conteudo.html')">Página 3</a>
 	    		</div>
 	    		<div class="col-md-4 center"></div>

@@ -1,3 +1,7 @@
+<?php
+	sleep(3); // pausa por 2 segundos
+	echo 'passou aqui';
+?>
 <div class="panel panel-default">
 	<div class="panel-body">
 		<h4>PÁGINA 2</h4>
